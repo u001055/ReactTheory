@@ -6,23 +6,28 @@ import Car from './Car/Car'
 
 class App extends Component {
 
-  state = {
-    cars: [{
-        name: 'Ford',
-        year: 2018
-      },
-      {
-        name: 'Audi',
-        year: 2016
-      },
-      {
-        name: 'Mazda',
-        year: 2010
-      }
-    ],
-    pageTitle: 'React components',
-    showCars: false
-  };
+  constructor(props) {
+    console.log('constructor');
+    super(props);
+    this.state = {
+      cars: [{
+          name: 'Ford',
+          year: 2018
+        },
+        {
+          name: 'Audi',
+          year: 2016
+        },
+        {
+          name: 'Mazda',
+          year: 2010
+        }
+      ],
+      pageTitle: 'React components',
+      showCars: false
+    };
+  
+  }
 
   toggleCarsHandler = () => {
     this.setState({
@@ -44,10 +49,18 @@ deleteHandler(index) {
   this.setState({cars});
 }
 
+componentWillMount() {
+  console.log('componentWillMount');
+}
+
+componentDidMount() {
+  console.log('componentDidMount');
+}
+
   render() {
+    console.log('render');
     const divStyle = {
-      textAlign: 'center',
-      backgroundColor: '#444'
+      textAlign: 'center'
     }
 
     let cars = null;
@@ -79,9 +92,14 @@ deleteHandler(index) {
       button onClick = {
         this.toggleCarsHandler} >
       Toggle cars </button>
-
+        <div style={{
+          width: 400,
+          margin: 'auto',
+          paddingTop: '20px'
+        }}>
       { cars
       }
+      </div>
 
     </div>
     );
